@@ -20,6 +20,18 @@ def jump_to(x, y):
     p.append([x])
     q.append([y])
 
+def x():
+    global p
+    l = len(p) - 1
+    m = len(p[l]) - 1
+    return p[l][m]
+
+def y():
+    global q
+    l = len(q) - 1
+    m = len(q[l]) - 1
+    return q[l][m]
+
 def draw(**kwargs):
     global p
     global q
