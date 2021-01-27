@@ -1,8 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-plt.rcParams['figure.figsize'] = [6, 6]
-
 def init():
     global p
     global q
@@ -25,6 +23,7 @@ def jump_to(x, y):
 def draw(**kwargs):
     global p
     global q
+    plt.rcParams['figure.figsize'] = [6, 6]
     l = len(p)
     for i in range(l):
         plt.plot(p[i], q[i], **kwargs)
