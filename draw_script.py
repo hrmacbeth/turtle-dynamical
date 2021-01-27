@@ -1,3 +1,5 @@
+import matplotlib.pyplot as plt
+
 def init():
     global p
     global q
