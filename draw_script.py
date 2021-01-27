@@ -1,5 +1,7 @@
 import matplotlib.pyplot as plt
 
+plt.rcParams['figure.figsize'] = [6, 6]
+
 def init():
     global p
     global q
