@@ -20,7 +20,7 @@ from sklearn.utils.validation import _deprecate_positional_args
 from sklearn.datasets import make_classification
 
 def make_linearly_separable(n_samples=100, scale=1, class_sep=1, noise=0, random_state_1=None, random_state_2=None):
-	"""Make a synthetic dataset approximately classified by a hyperplane."""
+    """Make a synthetic dataset approximately classified by a hyperplane."""
 
     X, y = make_classification(n_samples=n_samples, scale=scale, shift=[-class_sep, -class_sep],
           class_sep=class_sep,n_features=2, n_redundant=0, n_informative=2,
