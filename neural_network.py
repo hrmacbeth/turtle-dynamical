@@ -340,14 +340,13 @@ class BaseMultilayerPerceptron(BaseEstimator, metaclass=ABCMeta):
                 for param, update in zip(params, updates):
                     param -= update
 
-                self.n_iter_ += 1
+                it += 1
                 self.loss_ = loss
 
                 self.t_ += n_samples
                 self.loss_curve_.append(self.loss_)
-                if self.verbose:
-                    print("Iteration %d, loss = %.8f" % (self.n_iter_,
-                                                         self.loss_))
+                if self.verbose and it % 5 == 0:
+                    print(f"Iteration {it}, loss = {self.loss_}")
 
                 # update no_improvement_count based on training loss
                 self._update_no_improvement_count(X_val, y_val)
@@ -396,12 +395,11 @@ class BaseMultilayerPerceptron(BaseEstimator, metaclass=ABCMeta):
         """
         return self._fit(X, y, **kwargs)
 
-    @property
-    def num_parameters(self):
+    def num_parameters(self, num_features):
         hls = self.hidden_layer_sizes
-        if len(hls) == 0:
-            return 3
-        num_params = 3 * hls[0]
+        if len(hls) == 0: # logistic regression
+            return num_features + 1
+        num_params = (num_features + 1) * hls[0]
         for i in range(len(hls) - 1):
             num_params += (hls[i] + 1) * hls[i + 1]
         num_params += hls[len(hls) - 1] + 1
